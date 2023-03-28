@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"path"
+	"path/filepath"
 )
 
 // Download file downloader
@@ -16,7 +16,7 @@ func Download(url, filePath string) error {
 	}
 	defer res.Body.Close()
 
-	err = os.MkdirAll(path.Dir(filePath), os.FileMode(0777))
+	err = os.MkdirAll(filepath.Dir(filePath), os.FileMode(0777))
 	if err != nil {
 		return fmt.Errorf("create dir error: %+v", err)
 	}

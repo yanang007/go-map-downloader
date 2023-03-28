@@ -10,7 +10,6 @@ import (
 	"strconv"
 	"strings"
 	"sync"
-	"syscall"
 	"time"
 )
 
@@ -24,8 +23,8 @@ type Task struct {
 }
 
 func main() {
-	mask := syscall.Umask(0)
-	defer syscall.Umask(mask)
+	mask := Umask(0)
+	defer Umask(mask)
 
 	config := parseMapConfig()
 	fmt.Printf("config: %+v\n", config)
